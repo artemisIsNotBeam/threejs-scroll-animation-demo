@@ -112,8 +112,9 @@ function moveCamera() {
   moon.rotation.y += 0.075;
   moon.rotation.z += 0.05;
 
-  jeff.rotation.y += 0.01;
-  jeff.rotation.z += 0.01;
+  jeff.rotation.y += 0.03;
+  jeff.rotation.z += 0.03;
+  jeff.rotation.x += .03;
 
   ethBox.rotation.y += .02;
   ethBox.rotation.x += .02;
@@ -123,7 +124,6 @@ function moveCamera() {
     camera.position.z = t * -0.01;
     camera.position.x = t * -0.0002;
     camera.position.y = t * -0.0002;
-    console.log("first conditionis running");
   } else if(camera.position.z <60 && camera.position.z > 44){
 
     //only way this works is if z is also effected
@@ -146,8 +146,11 @@ function animate() {
 
   moon.rotation.x += 0.005;
 
-  // controls.update();
-  
+  jeff.rotation.y += 0.015;
+  jeff.rotation.z += 0.015;
+  jeff.rotation.x += .015;
+
+  // controls.update();  
   ethBox.rotation.y += .005;
   ethBox.rotation.x += .005;
   renderer.render(scene, camera);
