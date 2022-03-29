@@ -45,7 +45,7 @@ scene.add(pointLight, ambientLight);
 
 function addStar() {
   const geometry = new THREE.SphereGeometry(0.25, 24, 24);
-  const material = new THREE.MeshStandardMaterial({ color: 0xffffff });
+  const material = new THREE.MeshStandardMaterial({ color: 0xf8f8ff });
   const star = new THREE.Mesh(geometry, material);
 
   const [x, y, z] = Array(3)
@@ -56,11 +56,11 @@ function addStar() {
   scene.add(star);
 }
 
-Array(200).fill().forEach(addStar);
+Array(250).fill().forEach(addStar);
 
 // Background
 
-const spaceTexture = new THREE.TextureLoader().load('space.jpg');
+const spaceTexture = new THREE.TextureLoader().load('wp2562160-space-4k-wallpapers.jpg');
 scene.background = spaceTexture;
 
 // Avatar
@@ -85,6 +85,13 @@ const moon = new THREE.Mesh(
 );
 
 scene.add(moon);
+
+// my own eth box
+const ETHtexture = new THREE.TextureLoader().load("ETHEREUM-ICON_RGB.webp");
+const ethBox = new THREE.Mesh(new THREE.BoxGeometry(4,4,4), new THREE.MeshBasicMaterial({ map:ETHtexture}));
+scene.add(ethBox);
+//my very own nice box
+
 
 moon.position.z = 30;
 moon.position.setX(-10);
