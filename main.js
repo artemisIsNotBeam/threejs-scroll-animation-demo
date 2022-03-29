@@ -15,7 +15,7 @@ const renderer = new THREE.WebGLRenderer({
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
 camera.position.setZ(30);
-camera.position.setX(-3);
+camera.position.setX(-30);
 
 renderer.render(scene, camera);
 
@@ -65,7 +65,7 @@ scene.background = spaceTexture;
 
 // Avatar
 
-const jeffTexture = new THREE.TextureLoader().load('jeff.png');
+const jeffTexture = new THREE.TextureLoader().load('soonAuzki.png');
 
 const jeff = new THREE.Mesh(new THREE.BoxGeometry(3, 3, 3), new THREE.MeshBasicMaterial({ map: jeffTexture }));
 

@@ -10,3 +10,8 @@ git clone <this-repo>
 npm install
 npm run dev
 ```
+
+also run npm install three
+also run npm run dev
+
+so this is basically a template I took so yay me
