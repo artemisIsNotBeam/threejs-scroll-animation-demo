@@ -60,12 +60,12 @@ Array(250).fill().forEach(addStar);
 
 // Background
 
-const spaceTexture = new THREE.TextureLoader().load('wp2562160-space-4k-wallpapers.jpg');
+const spaceTexture = new THREE.TextureLoader().load('images/wp2562160-space-4k-wallpapers.jpg');
 scene.background = spaceTexture;
 
 // Avatar
 
-const jeffTexture = new THREE.TextureLoader().load('soonAuzki.png');
+const jeffTexture = new THREE.TextureLoader().load('images/soonAuzki.png');
 
 const jeff = new THREE.Mesh(new THREE.BoxGeometry(3, 3, 3), new THREE.MeshBasicMaterial({ map: jeffTexture }));
 
@@ -73,8 +73,8 @@ scene.add(jeff);
 
 // Moon
 
-const moonTexture = new THREE.TextureLoader().load('moon.jpg');
-const normalTexture = new THREE.TextureLoader().load('normal.jpg');
+const moonTexture = new THREE.TextureLoader().load('images/moon.jpg');
+const normalTexture = new THREE.TextureLoader().load('images/normal.jpg');
 
 const moon = new THREE.Mesh(
   new THREE.SphereGeometry(3, 32, 32),
@@ -87,18 +87,23 @@ const moon = new THREE.Mesh(
 scene.add(moon);
 
 // my own eth box
-const ETHtexture = new THREE.TextureLoader().load("ETHEREUM-ICON_RGB.webp");
-const ethBox = new THREE.Mesh(new THREE.BoxGeometry(4,4,4), new THREE.MeshBasicMaterial({ map:ETHtexture}));
+const ETHtexture = new THREE.TextureLoader().load("images/ETHEREUM-ICON_RGB.webp");
+const ethBox = new THREE.Mesh(new THREE.BoxGeometry(4,4,4), new THREE.MeshBasicMaterial({ map:ETHtexture }));
 scene.add(ethBox);
+
+
 //my very own nice box
 
-
+//positions
 moon.position.z = 30;
 moon.position.setX(-10);
 
 jeff.position.z = -5;
 jeff.position.x = 2;
 
+ethBox.position.z = 40;
+ethBox.position.x = -15;
+ethBox.position.y = 0;
 // Scroll Animation
 
 function moveCamera() {
@@ -110,9 +115,21 @@ function moveCamera() {
   jeff.rotation.y += 0.01;
   jeff.rotation.z += 0.01;
 
-  camera.position.z = t * -0.01;
-  camera.position.x = t * -0.0002;
-  camera.rotation.y = t * -0.0002;
+  ethBox.rotation.y += .02;
+  ethBox.rotation.x += .02;
+
+
+  if (camera.position.z < 44){
+    camera.position.z = t * -0.01;
+    camera.position.x = t * -0.0002;
+    camera.position.y = t * -0.0002;
+    console.log("first conditionis running");
+  } else if(camera.position.z <60 && camera.position.z > 44){
+
+    //only way this works is if z is also effected
+    camera.position.z = t * -0.01;
+    camera.position.y = t * -0.001;
+  }
 }
 
 document.body.onscroll = moveCamera;
@@ -130,7 +147,9 @@ function animate() {
   moon.rotation.x += 0.005;
 
   // controls.update();
-
+  
+  ethBox.rotation.y += .005;
+  ethBox.rotation.x += .005;
   renderer.render(scene, camera);
 }
 
